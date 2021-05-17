@@ -10,11 +10,12 @@ project 1 - A Random Quote Generator
 /*** 
  * `quotes` array 
 ***/
+// "quotes" is a variable that holds an array of Random Quote objects.
 const quotes = [
   {
     quote: "You can observe a lot just by watching.",
     source: "Yogi Berra",
-    citation: "Berra, Yogi (1998). The Yogi Book. New York: Workman Publishing. p. 9.",
+    citation: "The Yogi Book. New York: Workman Publishing. p. 9.",
     year: "1998"
   },
   {
@@ -26,46 +27,49 @@ const quotes = [
   {
     quote: "Cry 'Havoc!', and let slip the dogs of war.",
     source: "William Shakespeare",
-    citation: "phrase spoken by Mark Atony in Act 3, Scene 1, line 273 of English playwright William Shakespeare's Julius Caesar",
+    citation: "phrase spoken by Mark Antony in Act 3, Scene 1, line 273 of English playwright William Shakespeare's Julius Caesar",
     year: "1599 - 1600"
   },
   {
     quote: "VENI VINI VICI",
     source: "Julius Caesar",
-    citation: "According to Suetonius, Caesar displayed the words veni vidi vici in his triumph held over Pontus.",
+    citation: "Suetonius",
     year: "46 B.C." 
   },
   {
     quote: "Now, I am become Death, the destroyer of worlds.",
     source: "Bhagavad Gita",
-    citation: "https://en.wikipedia.org/wiki/J._Robert_Oppenheimer",
-    year: "unknown"
+    citation: "https://en.wikipedia.org/wiki/J._Robert_Oppenheimer"
   }
 ];
 
-
-/***
- * `getRandomQuote` function
-***/
+// Function to product a Random Quote.
 function getRandomQuote() {
-  let randomNumber = Math.floor(Math.random() * quotes.length);
-  for (let i = 0; i < quotes.length; i++) {
-    return randomQuote = quotes[randomNumber];
-  }
+  // "randomQuote" variable generates a random number between 0 and the last index of the "quotes" array.
+  const randomQuote = Math.floor(Math.random() * quotes.length);
+  // Returns a random Quote from the "quotes" array.
+  return quotes[randomQuote];
 }
-const result = getRandomQuote(quotes);
-/***
- * `printQuote` function
-***/
+
+// Function that will pass "randomQuote" variable to index.html.
 function printQuote() {
-  let html = "";
-  html = "<p class='quote'>" + result.quote + "</p>";
-  html = "<p class='source'>" + result.source;
-  html = "<spanp class='citation'>" + result.citation + "</span>";
-  html = "<span class='year'>" + result.year + "</span>";
-  html = "</p>";
+  // Created "selectedQuote" variable in order to pass it the getRandomQuote() function from above to printQuote() function.
+  let selectedQuote = getRandomQuote();
+  // Created "html" variable to select object iteration properties.
+  let html = `<p class="quote">${selectedQuote.quote}</p><p class="source">${selectedQuote.source}`;
+  // Created conditional to test if object property exists and build on "html" variable if true.
+  if (selectedQuote.citation) {
+    html += `<span class="citation">${selectedQuote.citation}</span>`;
+  }
+  // Another conditional testing if additional object property exists and further build on "html" variable of true.
+  if (selectedQuote.year) {
+    html += `<span class="year">${selectedQuote.year}</span></p>`;
+  }
+  // This was the single biggest area where I struggled.  Only after substaintial amount of reworking and reaching out to peers was I able to put this final piece together.  I think I was originally expecting the included bottom code to push the "html" object iterations to the web page.  Still don't really understand why the statement below can't be written "html = document.getElementById("quote-box").innerHTML;
+  document.getElementById("quote-box").innerHTML = html;
 }
-printQuote(result);
+
+printQuote();
 
 /***
  * click event listener for the print quote button
