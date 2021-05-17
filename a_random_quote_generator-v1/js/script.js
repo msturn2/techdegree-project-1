@@ -62,7 +62,7 @@ function printQuote() {
   if (selectedQuote.citation) {
     html += `<span class="citation">${selectedQuote.citation}</span>`;
   }
-  // Another conditional testing if additional object property exists and further build on "html" variable of true.
+  // This condidtional takes into account the possibility of not having a year value.
   if (selectedQuote.year !== null) {
     html += `<span class="year">${selectedQuote.year}</span></p>`;
   }
