@@ -40,7 +40,7 @@ const quotes = [
     quote: "Now, I am become Death, the destroyer of worlds.",
     source: "Bhagavad Gita",
     citation: "https://en.wikipedia.org/wiki/J._Robert_Oppenheimer",
-    year: "unknown"
+    year: null,
   }
 ];
 
@@ -63,13 +63,13 @@ function printQuote() {
     html += `<span class="citation">${selectedQuote.citation}</span>`;
   }
   // Another conditional testing if additional object property exists and further build on "html" variable of true.
-  if (selectedQuote.year) {
+  if (selectedQuote.year !== null) {
     html += `<span class="year">${selectedQuote.year}</span></p>`;
   }
-  // This was the single biggest area where I struggled.  Only after substaintial amount of reworking and reaching out to peers was I able to put this final piece together.  I think I was originally expecting the included bottom code to push the "html" object iterations to the web page.  Still don't really understand why the statement below can't be written "html = document.getElementById("quote-box").innerHTML;
+   // Used to push text held in "html" variable to the DOM.
   document.getElementById("quote-box").innerHTML = html;
 }
-
+// Final step is to call the function so that it runs!
 printQuote();
 
 /***
