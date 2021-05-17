@@ -39,7 +39,8 @@ const quotes = [
   {
     quote: "Now, I am become Death, the destroyer of worlds.",
     source: "Bhagavad Gita",
-    citation: "https://en.wikipedia.org/wiki/J._Robert_Oppenheimer"
+    citation: "https://en.wikipedia.org/wiki/J._Robert_Oppenheimer",
+    year: "unknown"
   }
 ];
 
