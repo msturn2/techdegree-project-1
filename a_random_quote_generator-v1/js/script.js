@@ -63,8 +63,10 @@ function printQuote() {
     html += `<span class="citation">${selectedQuote.citation}</span>`;
   }
   // This condidtional takes into account the possibility of not having a year value.
-  if (selectedQuote.year !== null) {
+  if(selectedQuote.year) {
     html += `<span class="year">${selectedQuote.year}</span></p>`;
+  } else {
+    html += `</p>`;
   }
    // Used to push text held in "html" variable to the DOM.
   document.getElementById("quote-box").innerHTML = html;
