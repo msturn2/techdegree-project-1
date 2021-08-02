@@ -44,7 +44,7 @@ const quotes = [
   }
 ];
 
-// Function to product a Random Quote.
+// Function to produce a Random Quote.
 function getRandomQuote() {
   // "randomQuote" variable generates a random number between 0 and the last index of the "quotes" array.
   const randomQuote = Math.floor(Math.random() * quotes.length);
@@ -62,12 +62,10 @@ function printQuote() {
   if (selectedQuote.citation) {
     html += `<span class="citation">${selectedQuote.citation}</span>`;
   }
-  // This condidtional takes into account the possibility of not having a year value.
-  if(selectedQuote.year) {
-    html += `<span class="year">${selectedQuote.year}</span></p>`;
-  } else {
-    html += `</p>`;
-  }
+  // Ternanry takes into account the possibility of not having a year value.
+  selectedQuote.year
+  ? html += `<span class="year">${selectedQuote.year}</span></p>`
+  : html += `</p>`;
    // Used to push text held in "html" variable to the DOM.
   document.getElementById("quote-box").innerHTML = html;
 }
